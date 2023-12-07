@@ -94,7 +94,7 @@ function App() {
           <p className="text-muted">Google Chrome and Firefox Support Only</p>
           <p className="text-muted">
               For optimal functionality, 
-              <a href="https://github.com/Waariss/Detecting-Vulnerable-OAuth-2.0-Implementations-in-Android-Applications/blob/main/Web_App/extension/How-to-use.md" target="_blank" rel="noopener noreferrer"> follow these instructions</a>.
+              <a href="https://github.com/Waariss/Oauth2.0/blob/main/extension/HOW_TO_USE.md" target="_blank" rel="noopener noreferrer"> follow these instructions</a>.
           </p>
           <div className="mt-4 mb-3">
               {/* Toggle button */}
