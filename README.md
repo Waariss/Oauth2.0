@@ -1,5 +1,7 @@
 # Detecting Vulnerable OAuth 2.0 Implementations in Android Applications
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/841d72a5-7c97-421b-85d2-efd1d0e9c42e/deploy-status)](https://app.netlify.com/sites/oauth-test-web/deploys)
+
 **Presented at the Workshop on Cyber Forensics, Security, and E-discovery, as part of the 23rd IEEE International Conference on Software Quality, Reliability, and Security, 2023.**
 
 OAuth 2.0, a widely used authorization framework, can potentially be vulnerable to cross-site request forgery (CSRF) attacks. While the introduction of a state parameter in the URL during the login process acts as a key countermeasure, the mere absence of this parameter doesn't automatically signify a vulnerability to CSRF attacks.
