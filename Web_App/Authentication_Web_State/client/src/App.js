@@ -84,7 +84,7 @@ function App() {
       };
       requestAccess();
     }
-  }, []);
+  }, [useStateParam]);
 
   return (
     <div className="container d-flex align-items-center justify-content-center vh-100">
