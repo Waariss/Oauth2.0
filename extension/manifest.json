@@ -1,0 +1,28 @@
+{
+  "name": "Google Auth Capture",
+  "version": "1.0",
+  "description": "Capture Google OAuth codes",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "https://*/*",
+    "http://*/*",
+    "<all_urls>",
+    "storage",
+    "tabs"
+  ],  
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*","<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 2
+}

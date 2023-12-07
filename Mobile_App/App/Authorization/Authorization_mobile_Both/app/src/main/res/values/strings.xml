@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Authorization_mobile_State</string>
+    <string name="filter_title_deep_linking">Deep Linking Filter</string>
+    <string name="profile_picture">Profile Picture</string>
+</resources>

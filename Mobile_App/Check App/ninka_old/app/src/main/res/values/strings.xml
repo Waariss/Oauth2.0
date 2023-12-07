@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CHECK2</string>
+    <string name="appAuthRedirectScheme">com.example.ninka</string>
+</resources>
