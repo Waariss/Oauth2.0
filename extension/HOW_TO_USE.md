@@ -5,7 +5,7 @@ This is an extension to detect vulnerabilities in OAuth 2.0 implementations. To 
 ## Installation Steps
 
 ### 1. Download the Extension
-First, download the extension files from [this GitHub repository](https://github.com/Waariss/Detecting-Vulnerable-OAuth-2.0-Implementations-in-Android-Applications/tree/main/Web_App/extension).
+First, download the extension files from [this GitHub repository](https://github.com/Waariss/Oauth2.0/blob/main/extension).
 
 ### 2. Installing on Google Chrome
 
