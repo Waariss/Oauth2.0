@@ -49,7 +49,8 @@ Our overarching goal is to determine whether applications employing OAuth 2.0 ar
 
 ### Additional Resources:
 - ![Extension](https://github.com/Waariss/Oauth2.0/blob/main/extension/HOW_TO_USE.md)
-- [Ritsumeikan University Poster](https://waris-damkham.netlify.app/pdf/1)
+- [Ritsumeikan University Poster](https://waris-damkham.netlify.app/pdf/Ritsumeikan_University_Poster)
+- [Conference Paper](https://ieeexplore.ieee.org/document/10430018)
 - [Cybersecurity Laboratory Blog](https://cysec.ise.ritsumei.ac.jp/2023/11/02/from-thailand-to-japan-my-cybersecurity-internship-at-ritsumeikan-university/)
 
 ---
