@@ -1,11 +1,12 @@
-# OAuth Vulnerability Detection Extension
+# OAuth 2.0 Flow Inspector Extension
 
-This is an extension to detect vulnerabilities in OAuth 2.0 implementations. To use it, follow the steps below:
+This extension helps you inspect OAuth 2.0 authorization requests and callbacks while giving a quick CSRF-risk verdict based on `state` and `code` validation.
 
 ## Installation Steps
 
 ### 1. Download the Extension
-First, download the extension files from [this GitHub repository](https://github.com/Waariss/Oauth2.0/blob/main/extension).
+Download the `extension` folder from this repository:
+<https://github.com/Waariss/Oauth2.0/tree/main/extension>
 
 ### 2. Installing on Google Chrome
 
@@ -13,22 +14,29 @@ First, download the extension files from [this GitHub repository](https://github
 2. Navigate to `chrome://extensions/`.
 3. Enable `Developer mode` by toggling the switch in the top right corner.
 4. Click on the `Load unpacked` button.
-5. Select the directory where you've downloaded and extracted the extension files.
+5. Select the local `extension` directory.
 6. The extension should now appear in your list of Chrome extensions.
-
-### 3. Installing on Firefox
-
-1. Open Firefox.
-2. Navigate to `about:debugging`.
-3. Click `This Firefox` on the left sidebar.
-4. Click `Load Temporary Add-on...`.
-5. Navigate to the directory where you've downloaded and extracted the extension files, and select the manifest file.
-6. The extension should now appear in your list of Firefox extensions.
 
 ## Usage
 
-Once installed, you can use the extension by clicking its icon in your browser's toolbar. Follow the on-screen instructions to detect OAuth vulnerabilities.
+1. Start an OAuth login flow in the target web application.
+2. After redirects complete, click the extension icon.
+3. Review the analysis shown in the popup:
+   - Verdict (`basic-protected`, `potential-csrf`, `state-mismatch`, `high-risk`, or `manual-review`)
+   - Findings explaining why the verdict was assigned
+   - Callback parameters (`code`, `state`, `nonce`, `response_type`)
+   - Last captured authorization-request URL and callback URL
+4. Use **Clear captured sessions** before testing another flow.
+
+## Interpretation Guide
+
+- `basic-protected`: request included `state`, callback returned matching `state`, and `code` exists.
+- `potential-csrf`: request did not include `state`.
+- `state-mismatch`: callback `state` differs from request `state`.
+- `high-risk`: callback missing `code` or callback missing `state` when request had `state`.
+- `manual-review`: callback was captured but a matching auth request was not captured by the extension.
 
 ---
 
-For any issues or further instructions, refer to the main [GitHub repository](https://github.com/Waariss/Detecting-Vulnerable-OAuth-2.0-Implementations-in-Android-Applications).
+For issues or updates, refer to the main repository:
+<https://github.com/Waariss/Oauth2.0>
