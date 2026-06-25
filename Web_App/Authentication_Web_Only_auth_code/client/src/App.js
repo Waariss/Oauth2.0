@@ -7,8 +7,8 @@ import Image from 'react-bootstrap/Image';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const CLIENT_ID = 'REDACTED_GOOGLE_CLIENT_ID';
-const CLIENT_SECRET = 'REDACTED_GOOGLE_CLIENT_SECRET'; 
+const CLIENT_ID = '11850868287-bk9segtppsphi3e41i51inkhvfvc2fro.apps.googleusercontent.com';
+const CLIENT_SECRET = process.env.REACT_APP_GOOGLE_CLIENT_SECRET || '';
 const REDIRECT_URI = 'http://localhost:3000/callback';
 const AUTH_URL = `https://accounts.google.com/o/oauth2/v2/auth?&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=profile email&access_type=offline&prompt=consent`;
 const TOKEN_URL = 'https://oauth2.googleapis.com/token';
@@ -27,6 +27,10 @@ function App() {
         if (code) {
             const requestAccess = async () => {
                 try {
+                    if (!CLIENT_SECRET) {
+                        setLoginStatus('Missing Google client secret. Move token exchange to server side.');
+                        return;
+                    }
                     const response = await axios.post(TOKEN_URL, qs.stringify({
                         client_id: CLIENT_ID,
                         client_secret: CLIENT_SECRET,

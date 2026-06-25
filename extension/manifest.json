@@ -1,28 +1,27 @@
 {
-  "name": "Google Auth Capture",
-  "version": "1.0",
-  "description": "Capture Google OAuth codes",
+  "name": "OAuth 2.0 Flow Inspector",
+  "version": "2.0.0",
+  "description": "Capture OAuth requests/callbacks and assess CSRF exposure from state/code validation.",
+  "manifest_version": 3,
   "permissions": [
-    "webRequest",
-    "webRequestBlocking",
-    "https://*/*",
-    "http://*/*",
-    "<all_urls>",
     "storage",
-    "tabs"
-  ],  
+    "webRequest"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "background": {
-    "scripts": ["background.js"],
-    "persistent": true
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*","<all_urls>"],
+      "matches": [
+        "<all_urls>"
+      ],
       "js": ["content.js"]
     }
   ],
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html"
-  },
-  "manifest_version": 2
+  }
 }

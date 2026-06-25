@@ -1,55 +1,44 @@
 # Detecting Vulnerable OAuth 2.0 Implementations in Android Applications
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/841d72a5-7c97-421b-85d2-efd1d0e9c42e/deploy-status)](https://app.netlify.com/sites/oauth-test-web/deploys)
-
 **Presented at the Workshop on Cyber Forensics, Security, and E-discovery, as part of the 23rd IEEE International Conference on Software Quality, Reliability, and Security, 2023.**
 
-OAuth 2.0, a widely used authorization framework, can potentially be vulnerable to cross-site request forgery (CSRF) attacks. While the introduction of a state parameter in the URL during the login process acts as a key countermeasure, the mere absence of this parameter doesn't automatically signify a vulnerability to CSRF attacks.
+This project studies real-world OAuth 2.0 implementations and focuses on how state handling impacts resilience against cross-site request forgery (CSRF). It combines research artifacts and practical tooling for both Android and Web environments.
 
-In our pursuit to understand the nuances of this issue, we crafted tools for analyzing both Android and web applications. Our primary focus was on those using OAuth 2.0 with Google accounts, emphasizing the role of the state parameter in countering CSRF attacks.
+Our primary objective is to help identify weak OAuth flows by inspecting whether critical callback signals—especially `state` and authorization `code`—are present and coherent across the authentication lifecycle.
 
-For Android applications, we developed an Android application dedicated to analyzing other apps. Our assessment extended to the login procedures of these applications through both the Chrome application and the default browser. The intent was to discern the presence (or lack) of both the state parameter and the authorization code, vital elements in CSRF attack prevention.
+## Project Scope
 
-For web applications, we developed a browser extension to examine the presence of critical security components like the state parameter and authorization code. This research emphasizes the importance of diligent implementation and robust security measures for developers using OAuth 2.0. By using this extension, we demonstrated the potential for auditing existing web applications for security vulnerabilities.
+### Android Track
+We developed Android-based tooling to evaluate OAuth 2.0 login behavior across browser contexts (Chrome and default browser), with emphasis on detecting missing or inconsistent parameters related to CSRF defense.
 
-Our overarching goal is to determine whether applications employing OAuth 2.0 are adequately safeguarded against CSRF attacks, irrespective of the platform. The insights derived from this research can play a pivotal role in enhancing user protection by pinpointing and cautioning against applications that, despite using OAuth 2.0 for social logins, are susceptible to CSRF attacks.
+### Web Track
+We developed a browser extension and companion web applications to inspect OAuth redirect behavior and assess whether implementations demonstrate basic CSRF protection characteristics.
 
-## Repository Contents
+## Highlights (2026)
 
-### Mobile App:
-- App
-- Check App
-- ninka
-- ninka_old
-- Chrome
+### OAuth 2.0 Flow Inspector Extension (`extension/`)
+- Upgraded to **v2.0.0**
+- Correlates authorization request and callback events
+- Produces CSRF-oriented verdicts:
+  `basic-protected`, `potential-csrf`, `state-mismatch`, `high-risk`, `manual-review`
+- Includes improved popup diagnostics and clearer finding summaries
 
-### Authentication:
-- Mobile:
-  - Both
-  - Nonce
-  - Only_auth_code
-  - mobile_code_chrome
-  - mobile_state_chrome
-- Web:
-  - Web_Nonce
-  - Web_Only_auth_code
-  - Web_State
+### Authentication Web State (`Web_App/Authentication_Web_State/client`)
+- Upgraded flow quality with **PKCE** support
+- Added explicit callback diagnostics for `state` and `code`
+- Integrated server-side token exchange endpoint
+- Improved UI for security-testing workflows
 
-### Authorization:
-- Mobile:
-  - Both
-  - nonce
-  - only_auth_code
-  - mobile_Code_Chrome
-  - mobile_State_Chrome
-- Web:
-  - Web_Auth_code
-  - Web_Nonce
-  - Web_State
+## Core Deliverables
 
-### Additional Resources:
-- ![Extension](https://github.com/Waariss/Oauth2.0/blob/main/extension/HOW_TO_USE.md)
-- [Ritsumeikan University Poster](https://waris-damkham.netlify.app/pdf/Ritsumeikan_University_Poster)
+- Research-backed Android testing workflows for OAuth 2.0 behavior analysis
+- Web OAuth testing applications for state/code validation scenarios
+- OAuth 2.0 Flow Inspector (Extension v2.0.0) for request-callback correlation and verdict-based assessment
+- Publication and conference artifacts supporting methodology and findings
+
+## References
+
+- [Extension Guide](https://github.com/Waariss/Oauth2.0/blob/main/extension/HOW_TO_USE.md)
 - [Conference Paper](https://ieeexplore.ieee.org/document/10430018)
 - [Cybersecurity Laboratory Blog](https://cysec.ise.ritsumei.ac.jp/2023/11/02/from-thailand-to-japan-my-cybersecurity-internship-at-ritsumeikan-university/)
 
